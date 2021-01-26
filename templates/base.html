@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %} - Mon site BDD</title>
+    {% endblock %}
+</head>
+<body>
+    <div class="content">{% block content %}{% endblock %}</div>
+    <div class="footer">
+        {% block footer %}
+        &copy; Copyright 2021 by by Manon Jeuland.
+        {% endblock %}
+    </div>
+</body>
+</html>

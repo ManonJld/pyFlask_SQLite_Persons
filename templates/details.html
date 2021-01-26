@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Nouvelle personne{% endblock %}
+{% block content %}
+{% if personne%}
+    {% for p in personne%}
+        <h1>Détail de {{p.nom_str()}}</h1>
+    {%endfor%}
+{%endif%}
+<h2>Ses adresses</h2>
+
+{% if adresses%}
+<table>
+    <tr>
+        <th>Rue</th>
+        <th>Code postal</th>
+        <th>ville</th>
+        <th>Type</th>
+    </tr>
+    <tr>
+    {% for adresse in adresses%}
+    <td>{{adresse.rue}}</td>
+    <td>{{adresse.cp}}</td>
+    <td>{{adresse.ville}}</td>
+    <td>{{adresse.type}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<a href="{{url_for('page_addaddress', idpersonne=id)}}">Ajouter une adresse</a><br>
+
+
+
+<a href = "{{ url_for('page_index') }}">Retour à l'accueil</a>
+{% endblock %}

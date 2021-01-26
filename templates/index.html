@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Page d'accueil{% endblock %}
+{% block content %}
+<h1>Accueil</h1>
+<p>Bienvenue sur le site de gestion des commandes de machin.com</p>
+<p>Voici la liste des personnes de notre base clients :</p>
+{% if personnes%}
+<table>
+    <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Adresse(s)</th>
+    </tr>
+    <tr>
+    {% for personne in personnes%}
+    <td>{{personne.prenom}}</td>
+    <td>{{personne.nom}}</td>
+    <td>{{personne.email}}</td>
+    <td><a href="{{url_for('page_detail', idpersonne=personne.id)}}">Voir détails</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+<a href = "{{ url_for('page_addperson') }}">Ajouter une nouvelle personne</a>
+{% endblock %}

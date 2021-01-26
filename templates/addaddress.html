@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Nouvelle personne{% endblock %}
+{% block content %}
+{% if personne%}
+    {% for p in personne%}
+        <h1>Détail de {{p.nom_str()}}</h1>
+    {%endfor%}
+{%endif%}
+
+<h2>Ajouter une adresse</h2>
+
+<form action = "{{ request.path }}" method = "post">
+    <label for = "rue">Rue</label><br>
+    <input type = "text" name = "rue" placeholder = "rue" />
+    <br>
+    <label for = "cp">Code postal</label><br>
+    <input type = "number" name = "cp" placeholder = "code postal" />
+    <br>
+    <label for = "ville">Ville</label><br>
+    <input type = "text" name = "ville" placeholder = "ville"/>
+    <br>
+    <label for = "typea">Type de l'adresse</label><br>
+    <input type = "text" name = "typea" placeholder = "type"/>
+    <br>
+    <input type = "hidden" name = "personne_id" value="{{id}}"/>
+    <br>
+    <input type = "submit" value = "Submit" />
+</form>
+
+
+{% endblock %}
